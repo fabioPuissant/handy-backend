@@ -1,0 +1,33 @@
+auth0:
+  audience: http://localhost:8080
+  userinfo:
+    endpoint: https://dev-syntiq.eu.auth0.com/userinfo
+
+spring:
+  datasource:
+    platform: postgres
+    password: letmein
+    url: jdbc:postgresql://localhost:5432/handy
+    username: fabio #postgres #fabio
+    driverClassName: org.postgresql.Driver
+    schema: public
+    hikari:
+      schema: public
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-syntiq.eu.auth0.com/
+
+  jpa:
+    hibernate:
+      ddl-auto:  create #validate #none #create
+
+    properties:
+      database: POSTGRES
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        default_schema: public
+    show-sql: true
